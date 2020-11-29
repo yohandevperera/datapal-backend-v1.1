@@ -1,0 +1,58 @@
+<!-- ============================================================== -->
+<!-- validation form -->
+<!-- ============================================================== -->
+<br><br><br>
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Add New Record</h5>
+        <div class="card-body">
+            <form class="needs-validation" novalidate action="/admin/records/create" method="POST">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="customer-id">Customer ID</label>
+                        <input type="text" class="form-control" id="customer-id" placeholder="First name" value="Mark"
+                            required>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="customer-name">Customer name</label>
+                        <input type="text" class="form-control" id="customer-name" placeholder="Last name" value="Otto"
+                            required>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="customer-tel">Telephone</label>
+                        <input type="number" class="form-control" id="customer-tel" placeholder="Telephone" value="1234"
+                            required>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="customer-address">Address</label>
+                        <input type="text" class="form-control" id="customer-address" placeholder="Address" value="Otto"
+                            required>
+                        <br>
+
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="customer-address">Email</label>
+                        <input type="email" class="form-control" id="customer-address" placeholder="Email"
+                            value="Otto@123.com" required>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <button class="btn btn-primary" type="submit">Add Customer</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- end validation form -->
+<!-- ============================================================== -->

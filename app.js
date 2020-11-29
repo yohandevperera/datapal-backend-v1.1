@@ -4,6 +4,7 @@ const path = require("path")
 const hbs = require("express-handlebars")
 const {dburl,port} = require("./config/config")
 const deafultroutes = require("./routes/defaultroutes")
+const adminroutes = require("./routes/adminroute")
 
 
 
@@ -32,6 +33,9 @@ app.set('view engine','handlebars')
 // routes
 
 app.use('/',deafultroutes)
+app.use('/admin',adminroutes)
+
+
 
 
 
