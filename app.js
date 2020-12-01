@@ -2,9 +2,11 @@ const express = require("express")
 const mysql = require("mysql")
 const path = require("path")
 const hbs = require("express-handlebars")
-const {dburl,port} = require("./config/config")
+const {dburl,port,globalVariables} = require("./config/config")
 const deafultroutes = require("./routes/defaultroutes")
 const adminroutes = require("./routes/adminroute")
+const flash = require('connect-flash')
+const session = require('express-session')
 
 
 
@@ -18,12 +20,26 @@ connection.connect((err)=>{
     if(err) throw err
     console.log('DB connected')
 })
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 
 // configure epxress
-
+//app.use(express.bodyParser())
 app.use(express.json()) // using middleware
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,'public')))
+
+
+app.use(session({
+    secret : 'anysecret',
+    saveUninitialized: true,
+    resave: true
+}))
+
+app.use(flash())
+
+app.use(globalVariables)
 
 // View engine setup 
 
@@ -34,6 +50,11 @@ app.set('view engine','handlebars')
 
 app.use('/',deafultroutes)
 app.use('/admin',adminroutes)
+
+
+
+
+
 
 
 

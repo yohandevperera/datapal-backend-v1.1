@@ -1,24 +1,31 @@
-const mysql = require('mysql')
-const {dburl} = require("./config/config")
+const mysql = require("mysql")
+const {dburl} = require("../config/config")
 
-const con = mysql.createConnection(dburl)
+class customerModel {
 
-function addCustomer(data){
+    
+    con = mysql.createConnection(dburl)
+     
 
-    // VALUES ('', '', '', '', '')
+    constructor(){
+        console.log('Customer Model is called')
+    }
 
-    con.connect((err)=>{
-        if(err) throw err
-        console.log('Connected')
-        const insertQuery = "INSERT INTO `customers_tbl` (`CustomerID`, `CustomerName`, `Telephone`, `Address`, `Email`)" +
-                            "VALUES ('"+data.CustomerID+"', '"+data.CustomerName+"', "+data.Telephone+", '"+data.Address+"', "+data.Email+")"
-        con.query(insertQuery,(err,result)=>{
+    addCustomer(data,callback){
+
+      this.con.connect((err)=>{
             if(err) throw err
-            console.log('Data Added')
+            console.log('Connected')
+            const insertQuery = "INSERT INTO `customers_tbl` (`CustomerID`, `CustomerName`, `Telephone`, `Address`, `Email`)" +
+                                "VALUES ('"+data.CustomerID+"', '"+data.CustomerName+"', "+data.Telephone+", '"+data.Address+"', '"+data.Email+"')"
+            this.con.query(insertQuery,(err,result)=>{
+                if(err) throw err
+                console.log(result.affectedRows)
+                return callback(result.affectedRows)
+            })
         })
-    })
+    }
+
 }
 
-module.exports = {
-    Post : addCustomer()
-}
+module.exports = customerModel
