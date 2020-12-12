@@ -1,1 +1,32 @@
-<h1>ALL Posts</h1>
+<div class="container">
+    <div class="alert alert-secondary text-center">
+        <h2 style="margin-top: 10px;">All Records</h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Customer ID</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Telephone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Email</th>
+                <th scope="col">Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each records}}
+            <tr>
+                <td>{{CustomerID}}</td>
+                <td>{{CustomerName}}</td>
+                <td>{{Telephone}}</td>
+                <td>{{Address}}</td>
+                <td>{{Email}}</td>
+                <td>
+                    <a href="/admin/records/edit/{{CustomerID}}" class="btn btn-sm btn-success">Edit Posts</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

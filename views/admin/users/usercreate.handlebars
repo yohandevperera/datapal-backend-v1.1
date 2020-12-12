@@ -1,0 +1,75 @@
+<!-- ============================================================== -->
+<!-- users create form -->
+<!-- ============================================================== -->
+
+
+
+<br><br><br>
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Add New User</h5>
+        <div class="card-body">
+            <form class="needs-validation" action="/admin/users/create" method="POST">
+                <div class="row">
+                    {{!-- have to come from the db --}}
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="userid">User ID</label>
+                        <input type="text" class="form-control" name="userid" id="userid" placeholder="UserID"
+                            value={{userid}} readonly>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="customer-name">Username</label>
+                        <input type="text" class="form-control" name="username" id="username"
+                            placeholder="Enter a Username" required>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="customer-tel">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email"
+                            required>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-7 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control" name="password" id="password"
+                            placeholder="Enter Password" required>
+                        <br>
+                    </div>
+                    <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
+                        <label for="confirmpassword">Confrim Password</label>
+                        <input type="text" class="form-control" name="confirmpassword" id="confirmpassword"
+                            placeholder="Renter the Password" required>
+                        <br>
+                    </div>
+
+
+
+                    <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
+                        <label for="userrole">State</label>
+                        <select id="userrole" name="userrole" class="form-control">
+                            <option selected>Choose...</option>
+                            <option value="1">Admin</option>
+                            <option value="2">Technician</option>
+                            <option value="3">Receptionist</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
+                        <div class="form-check" style="margin-top: 40px; margin-left: 10px; margin-bottom: 50px;">
+                            <input type="checkbox" class="form-check-input" id="userstate" name="userstate">
+                            <label class="form-check-label" for="userstate">User Status</label>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <button class="btn btn-primary" type="submit">Add User</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

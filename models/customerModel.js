@@ -26,6 +26,53 @@ class customerModel {
         })
     }
 
+    viewCustomer(callback){
+        this.con.connect((err)=>{
+            if(err) throw err
+           // console.log('Connected')
+            const selectQuery = "SELECT * FROM `customers_tbl`"
+            this.con.query(selectQuery,(err,result,feilds)=>{
+                if(err) throw err
+               // console.log(result)
+                return callback(result)
+            })
+        })
+    }
+
+    getcustomerid(callback){
+        this.con.connect((err)=>{
+            if(err) throw err
+           // console.log('Connected')
+            const selectQuery = "SELECT CustomerID FROM `customers_tbl`"
+            this.con.query(selectQuery,(err,result,feilds)=>{
+                if(err) throw err
+            //    / console.log(result)
+                return callback(result)
+            })
+        })
+    }
+
+    getDatabyid(id,callback){
+        this.con.connect((err)=>{
+            if(err) throw err
+           // console.log('Connected')
+            const selectQuery = "SELECT * FROM `customers_tbl` WHERE CustomerID = '"+id+"'"
+            this.con.query(selectQuery,(err,result,feilds)=>{
+                if(err) throw err
+               // console.log(result)
+                return callback(result)
+            })
+        })
+    }
+
+    
+
+     
+
+    updateCustomer(){
+
+    }
+
 }
 
 module.exports = customerModel

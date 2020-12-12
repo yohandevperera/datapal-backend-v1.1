@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="alert alert-secondary text-center">
+        <h2 style="margin-top: 10px;">All Users</h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">UserRole</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{UserID}}</td>
+                <td>{{Username}}</td>
+                <td>{{Email}}</td>
+                {{!-- TODO: these should be in string form --}}
+                <td>{{UserRole}}</td>
+                <td>{{status}}</td>
+                <td>
+                    <a href="/admin//users/edit/{{UserID}}" class="btn btn-sm btn-success">Edit User</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
