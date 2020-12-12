@@ -1,7 +1,8 @@
  const customerModel = require('../models/customerModel')
  const userModel = require('../models/userModel')
- const nodemailer = require('nodemailer')
  const bcrypt = require('bcryptjs')
+ const emailMediator = require("../config/emailservice")
+
  
  
 
@@ -147,7 +148,18 @@ module.exports = {
     },
 
     test :(req,res)=>{
-      
+
+        emailMediator.sendEmail({
+
+            to: 'yohanperera27@gmail.com',
+            subject: 'Test Email',
+            text: 'Hello World'
+         
+        },function(result){
+          
+            console.log(result)
+          
+        })    
     }
 
 }
