@@ -24,6 +24,7 @@ connection.connect((err)=>{
     console.log('DB connected')
 })
 var bodyParser = require('body-parser');
+const passport = require("passport")
 app.use(bodyParser.json());
 
 
@@ -42,6 +43,11 @@ app.use(session({
 
 app.use(flash())
 
+app.use(passport.initialize())
+app.use(passport.session())
+
+
+
 app.use(globalVariables)
 
 // View engine setup 
@@ -53,6 +59,7 @@ app.set('view engine','handlebars')
 
 app.use('/',deafultroutes)
 app.use('/admin',adminroutes)
+
 
 
 

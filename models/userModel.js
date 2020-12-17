@@ -6,7 +6,7 @@ class customerModel {
     con = mysql.createConnection(dburl) 
 
     constructor(){
-        console.log('User model is called')
+        //console.log('User model is called')
     }
 
     addUser(data,callback){
@@ -102,7 +102,7 @@ class customerModel {
 
     updateUser(id,data,callback){
         
-            var updateQuery = "UPDATE users_tbl SET " +
+            const updateQuery = "UPDATE users_tbl SET " +
                       "Username = '"+data.username+"', " + 
                       "Email = '"+data.email+"', " +
                       "Password = '"+data.password+"', " + 
@@ -118,6 +118,26 @@ class customerModel {
               callback(result.affectedRows)
             });     
     }
+
+    authenticateUser(email,callback){
+        const authenticateQuery = "SELECT * FROM `users_tbl` WHERE Email  = '"+email+"'"  
+        this.con.query(authenticateQuery,function(err,result){
+            if(err) throw err;
+            console.log(result)
+            callback(result)
+        })
+    }
+
+    findUser(id,callback){
+        const authenticateQuery = "SELECT * FROM `users_tbl` WHERE UserID  = '"+id+"'"  
+        //console.log(authenticateQuery)
+        // console.log(authenticateQuery)
+        this.con.query(authenticateQuery,function(err,result){
+            if(err) throw err;
+            callback(result)
+        })
+    }
+
 
 }
 

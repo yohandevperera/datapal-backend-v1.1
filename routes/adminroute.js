@@ -1,13 +1,15 @@
 const express = require('express')
 const router =  express.Router()
 const adminController = require("../controllers/adminController")
+const userController = require("../controllers/userController")
+const {isUserAuthenticated} = require("../config/customfunctions")
 
 
-router.all('/*',(req,res,next)=>{
+router.all('/*',isUserAuthenticated,(req,res,next)=>{
 
-    req.app.locals.layout = 'admin'
-
-    next();
+      req.app.locals.layout = 'admin'
+      next();
+     
 })
 
 router.route('/')
@@ -28,18 +30,18 @@ router.route('/records/edit/:id')
 // User Management Routes
 
 router.route('/users')
-      .get(adminController.getUsers)
+      .get(userController.index)
 
 router.route('/users/create')
-      .get(adminController.addUsers)
-      .post(adminController.postUser)
+      .get(userController.addUserRender)
+      .post(userController.addUser)
 
 router.route('/users/edit/:id')
-      .get(adminController.editUserRender)
-      .post(adminController.editUser)
+      .get(userController.editUserRender)
+      .post(userController.editUser)
 
 router.route('/users/edit/')
-      .post(adminController.editUser)
+      .post(userController.editUser)
 
 
 router.route('/users/test')
