@@ -5,12 +5,6 @@ const passport = require('passport')
 const localStrategy = require('passport-local').Strategy
 const bcrypt = require('bcryptjs')
 const userModel = require('../models/userModel')
-const { connect } = require('./adminroute')
-const {isUserAuthenticated} = require("../config/customfunctions")
-const ConnectRoles = require('connect-roles')
-
-
-
 
 
 
@@ -47,7 +41,7 @@ passport.use(new localStrategy({
                        }
 
                        console.log('Password ' + getpassword)
-                     //  console.log(passwordMatched)
+                     //console.log(passwordMatched)
                        
                        if(!passwordMatched){
                          
@@ -74,26 +68,11 @@ passport.deserializeUser(function(id, done) {
       })
 });
 
-var user = new ConnectRoles({
-      failureHandler: function (req, res, action) {
-        // optional function to customise code that runs when
-        // user fails authorisation
-        var accept = req.headers.accept || '';
-        res.status(403);
-        if (~accept.indexOf('html')) {
-          res.render('access-denied', {action: action});
-        } else {
-          res.send('Access Denied - You don\'t have permission to: ' + action);
-        }
-      }
-    });
-
-    
 
 router.route('/login')
       .get(deafultController.login)
       .post(passport.authenticate('local',{
-            successRedirect:'/admin',
+            successRedirect:'/map',
             failureRedirect:'/login',
             failureFlash:true,
             successFlash:true,
@@ -104,6 +83,5 @@ router.route('/register')
       .get(deafultController.registerGet)
       .post(deafultController.registerPost)
       
-
 
 module.exports = router

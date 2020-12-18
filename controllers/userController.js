@@ -65,7 +65,7 @@ module.exports = {
                             {
                                 to:req.body.email,
                                 subject: 'Miscellany Electronics Notifcations',
-                                text: 'This is your Backup Code :' + forgotID + 'Please write it down and use it in case if you forget your primary password' 
+                                text: 'This is your Backup Code :  ' + forgotID + '  Please write it down and use it in case if you forget your primary password' 
                             }
                             //&& response != null
                             if(result>=1 ){

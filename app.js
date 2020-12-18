@@ -3,10 +3,19 @@ const mysql = require("mysql")
 const path = require("path")
 const hbs = require("express-handlebars")
 const {dburl,port,globalVariables} = require("./config/config")
-const deafultroutes = require("./routes/defaultroutes")
-const adminroutes = require("./routes/adminroute")
 const flash = require('connect-flash')
 const session = require('express-session')
+
+// Main Routes 
+
+const deafultroutes = require("./routes/defaultroutes")
+const adminroutes = require("./routes/adminroute")
+const routeMap = require("./routes/routeMap")
+const receptionistRoute = require("./routes/receptionistroute")
+const technicianRoute = require("./routes/technicianroute")
+
+
+
 
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -59,7 +68,9 @@ app.set('view engine','handlebars')
 
 app.use('/',deafultroutes)
 app.use('/admin',adminroutes)
-
+app.use('/map',routeMap)
+app.use('/tech',technicianRoute)
+app.use('/recpt',receptionistRoute)
 
 
 
