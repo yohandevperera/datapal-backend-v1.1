@@ -1,0 +1,69 @@
+<!-- ============================================================== -->
+<!-- customer create form -->
+<!-- ============================================================== -->
+
+<script>var base_url = window.location.origin;</script>
+
+
+<br><br><br>
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Add Customer</h5>
+        <div class="card-body">
+            <form class="needs-validation" action="../customer/create" method="POST">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="userid">Customer ID</label>
+                        <input type="text" class="form-control" name="customerid" id="customerid" placeholder="UserID"
+                            value={{cusid}} readonly>
+                        <br>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="customer-name">Name</label>
+                        <input type="text" class="form-control" name="customername" id="customername"
+                            placeholder="Enter Customer Name" required>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <label for="customer-tel">Telephone</label>
+                        <input type="number" class="form-control" name="telephone" id="telephone"
+                            placeholder="Enter a moblie number"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type="number" maxlength="10" required>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+
+                        <label for="customer-tel">Address</label>
+                        <textarea class="form-control" name="address" id="address"
+                            required>Enter customer Address</textarea>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+
+                        <label for="customer-tel">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email"
+                            required>
+                        <br>
+                    </div>
+
+                    <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12 col-12 mb-2">
+                        <div class="form-check" style="margin-top: 40px; margin-left: 10px; margin-bottom: 50px;">
+                            <input type="checkbox" class="form-check-input" id="customerstate" name="customerstate"
+                                checked>
+                            <label class="form-check-label" for="customerstate">Customer active Status</label>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <button class="btn btn-primary" type="submit">Add Customer</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

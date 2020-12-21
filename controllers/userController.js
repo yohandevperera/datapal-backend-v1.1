@@ -16,6 +16,30 @@ module.exports = {
     index : (req,res)=>{
         const obj = new userModel()
         obj.viewUsers(function(result){
+        
+        Object.size = function(obj) {
+                var size = 0, key;
+                for (key in obj) {
+                    if (obj.hasOwnProperty(key)) size++;
+                }
+                return size;
+        };
+
+        let size = Object.size(result)
+        
+        for(i=0; i<size;++i){
+
+        if(result[i].UserRole == 1){
+            result[i].UserRoleName = "Admin";
+        }else if(result[i].UserRole == 2){
+            result[i].UserRoleName = "Technician";
+        }else if(result[i].UserRole == 3) {
+            result[i].UserRoleName = "Recepionist";
+        }
+        
+        result[i].status ? result[i].statusName = 'Active' : result[i].statusName = 'Inactive';
+        
+    }
          res.render('admin/users',{
              users:result 
            })

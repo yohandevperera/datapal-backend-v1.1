@@ -2,10 +2,11 @@ const express = require('express')
 const router =  express.Router()
 const adminController = require("../controllers/adminController")
 const userController = require("../controllers/userController")
+const customerController = require("../controllers/customerController")
 const {isUserAuthenticated} = require("../config/customfunctions")
 
-
-router.all('/*',isUserAuthenticated,(req,res,next)=>{
+//isUserAuthenticated
+router.all('/*',(req,res,next)=>{
 
       req.app.locals.layout = 'admin'
       next();
@@ -43,9 +44,22 @@ router.route('/users/edit/:id')
 router.route('/users/edit/')
       .post(userController.editUser)
 
+// Customer Routes
 
-router.route('/users/test')
-      .get(adminController.test)
+router.route('/customer')
+      .get(customerController.index)
+
+router.route('/customer/create')
+      .get(customerController.addCustomerRender)
+      .post(customerController.addCustomer)
+
+router.route('/customer/edit/')
+      .post(customerController.editCustomer)
+
+
+router.route('/customer/edit/:id')
+      .get(customerController.editCustomerRender)
+      // .post(customerController.editUser)
 
 
 
